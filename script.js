@@ -10,28 +10,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Redirect button functionality
 document.getElementById('redirectButton').addEventListener('click', function() {
-    // Array of travel-related websites
-    const websites = [
-        'https://www.nationalgeographic.com/travel',
-        'https://www.lonelyplanet.com',
-        'https://www.tripadvisor.com',
-        'https://www.booking.com',
-        'https://www.expedia.com'
+    const safetyResources = [
+        'https://staysafeonline.org',
+        'https://www.consumer.ftc.gov/topics/privacy-identity-online-security',
+        'https://www.connectsafely.org',
+        'https://www.internetsociety.org/learning/',
+        'https://www.ncsc.gov.uk/section/information-for/individuals-families'
     ];
     
-    // Get a random website from the array
-    const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
-    
-    // Track click event (if you want to add analytics)
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'click', {
-            'event_category': 'outbound',
-            'event_label': randomWebsite
-        });
-    }
-    
-    // Open in new tab instead of direct redirect
-    window.open(randomWebsite, '_blank');
+    const randomResource = safetyResources[Math.floor(Math.random() * safetyResources.length)];
+    window.open(randomResource, '_blank');
 });
 
 // Add lazy loading for images if you add them later

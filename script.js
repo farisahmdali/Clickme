@@ -59,19 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
             updateProgressBar(clickCount);
             
             // Show remaining clicks notification
-            const remainingClicks = 5 - clickCount;
-            if (remainingClicks > 0) {
-                // alert(`Please visit our sponsor ${remainingClicks} more time(s) to access your download.`);
-            } else {
-                // alert("Thank you! You can now access your download on the next click.");
-                redirectButton.textContent = "Download Now";
-            }
+            
             
             // Open ad link
-            window.open(adLink, '_blank');
+            location.href = adLink;
         } else {
             // After 5 clicks, redirect to Telegram
-            window.open(telegramLink, '_blank');
+            location.href = telegramLink;
             
             // Reset counter to 0 after clicking the final link
             clickCount = 0;

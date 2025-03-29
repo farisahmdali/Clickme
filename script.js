@@ -8,14 +8,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Redirect button functionality with click counter and progress bar
+// Initialize all ad buttons
 document.addEventListener('DOMContentLoaded', function() {
+    // Setup main redirect button with progress tracking
     const redirectButton = document.getElementById('redirectButton');
+    const adLink = "https://www.effectiveratecpm.com/ub2a9a2t?key=b9c4f34b15fa5b2b885862ffc9aab13a";
+    const telegramLink = "https://t.me/+VzkqtqLIjlM3ZWFl";
     
     // Create progress bar container
     const progressContainer = document.createElement('div');
     progressContainer.className = 'progress-container';
-    progressContainer.innerHTML = '<div class="progress-text">Download progress: <span id="progress-count">0</span>/5</div><div class="progress-bar"><div class="progress-fill"></div></div>';
+    progressContainer.innerHTML = '<div class="progress-text">Progress: <span id="progress-count">0</span>/5</div><div class="progress-bar"><div class="progress-fill"></div></div>';
     
     // Insert progress bar before the button
     redirectButton.parentNode.insertBefore(progressContainer, redirectButton);
@@ -23,67 +26,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressFill = document.querySelector('.progress-fill');
     const progressCount = document.getElementById('progress-count');
     
-    // Check if click count exists in localStorage
+    // Initialize click counter
     let clickCount = localStorage.getItem('redirectClickCount') ? 
                      parseInt(localStorage.getItem('redirectClickCount')) : 0;
-    
-    // Make sure clickCount doesn't exceed 5
-    clickCount = Math.min(clickCount, 5);
     
     // Update progress bar initially
     updateProgressBar(clickCount);
     
-    // Update button text if user has already completed 5 clicks
-    if (clickCount >= 5) {
-        redirectButton.textContent = "Download Now";
-    } else {
-        redirectButton.textContent = "Download";
-    }
-    
+    // Setup main redirect button
     redirectButton.addEventListener('click', function() {
-        // First link (for first 5 clicks)
-        const adLink = ["https://www.effectiveratecpm.com/ub2a9a2t?key=b9c4f34b15fa5b2b885862ffc9aab13a","https://moodeccentricquotation.com/t55au04p6?key=414f861460dcea7f5caab5d0e1c5c655","https://moodeccentricquotation.com/j41zmpr39?key=c62f8c9f56ae370af52bab5b2a44179a","https://moodeccentricquotation.com/fbkzj6pbre?key=3c58e3394c47a7f9d9d37d7704ef3260","https://moodeccentricquotation.com/asism894?key=2b26a5536860526c2b064e3e2b9dbd43","https://moodeccentricquotation.com/p3g0qdux1?key=031085f2c4ab58cd8562e263b84d22da"];
-        
-        // Second link (after 5 clicks)
-        const telegramLink = "https://t.me/+VzkqtqLIjlM3ZWFl";
-        
-        // Determine which link to open based on click count
         if (clickCount < 5) {
-            // Increment click count
             clickCount++;
-            
-            // Store updated click count
             localStorage.setItem('redirectClickCount', clickCount);
-            
-            // Update progress bar
             updateProgressBar(clickCount);
-            
-            // Show remaining clicks notification
-            
-            
-            // Open ad link
-            location.href = adLink[clickCount];
+            window.location.href = adLink;
         } else {
-            // After 5 clicks, redirect to Telegram
-            location.href = telegramLink;
-            
-            // Reset counter to 0 after clicking the final link
+            window.location.href = telegramLink;
             clickCount = 0;
             localStorage.setItem('redirectClickCount', clickCount);
-            
-            // Update progress bar
             updateProgressBar(clickCount);
-            
-            // Reset button text
-            redirectButton.textContent = "Download";
         }
     });
-    
+
+    // Setup all ad buttons
+    document.querySelectorAll('.ad-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const link = this.getAttribute('data-ad-link');
+            window.open(link,"_self");
+        });
+
+        // Add hover effect
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+
     // Function to update progress bar
     function updateProgressBar(count) {
         const percentage = (count / 5) * 100;
         progressFill.style.width = `${percentage}%`;
         progressCount.textContent = count;
+    }
+
+    // Floating button position update
+    const floatingButton = document.querySelector('.floating-ad-button');
+    if (floatingButton) {
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop) {
+                // Scrolling down
+                floatingButton.style.bottom = '20px';
+            } else {
+                // Scrolling up
+                floatingButton.style.bottom = '100px';
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        });
     }
 });
 
@@ -108,3 +112,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     images.forEach(img => imageObserver.observe(img));
 });
+
+// Add popup notification for ad clicks
+function showAdNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'ad-notification';
+    notification.textContent = 'Loading special offer...';
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.remove();
+    }, 2000);
+}

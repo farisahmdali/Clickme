@@ -112,6 +112,7 @@ p {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .info-card:hover, .tool-card:hover {
@@ -300,4 +301,160 @@ footer {
     background-color: #3498db;
     width: 0%;
     transition: width 0.3s ease;
+}
+
+/* Ad Button Styles */
+.ad-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ad-button i {
+    font-size: 1.2em;
+}
+
+.ad-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Floating Ad Button */
+.floating-ad-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #ff4081;
+}
+
+.floating-button:hover {
+    background-color: #f50057;
+}
+
+/* Banner Ad Container */
+.banner-ad-container {
+    width: 100%;
+    background-color: #f8d7da;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 99;
+}
+
+.banner-button {
+    background-color: #dc3545;
+    font-size: 1.1em;
+}
+
+.banner-button:hover {
+    background-color: #c82333;
+}
+
+/* Mid-page Ad */
+.mid-page-ad {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 20px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+}
+
+.large-button {
+    padding: 20px 40px;
+    font-size: 1.2em;
+    background-color: #2196F3;
+}
+
+.large-button:hover {
+    background-color: #1976D2;
+}
+
+/* Ad Notification */
+.ad-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1001;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background-color: #e8f5e9;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.email-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.newsletter-button {
+    background-color: #8bc34a;
+}
+
+.newsletter-button:hover {
+    background-color: #7cb342;
+}
+
+/* Resource Buttons */
+.resource-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.resource-button {
+    background-color: #9c27b0;
+}
+
+.resource-button:hover {
+    background-color: #7b1fa2;
 }

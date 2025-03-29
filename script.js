@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     redirectButton.addEventListener('click', function() {
         // First link (for first 5 clicks)
-        const adLink = "https://www.effectiveratecpm.com/ub2a9a2t?key=b9c4f34b15fa5b2b885862ffc9aab13a";
+        const adLink = ["https://www.effectiveratecpm.com/ub2a9a2t?key=b9c4f34b15fa5b2b885862ffc9aab13a","https://moodeccentricquotation.com/t55au04p6?key=414f861460dcea7f5caab5d0e1c5c655","https://moodeccentricquotation.com/j41zmpr39?key=c62f8c9f56ae370af52bab5b2a44179a","https://moodeccentricquotation.com/fbkzj6pbre?key=3c58e3394c47a7f9d9d37d7704ef3260","https://moodeccentricquotation.com/asism894?key=2b26a5536860526c2b064e3e2b9dbd43","https://moodeccentricquotation.com/p3g0qdux1?key=031085f2c4ab58cd8562e263b84d22da"];
         
         // Second link (after 5 clicks)
         const telegramLink = "https://t.me/+VzkqtqLIjlM3ZWFl";
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             
             // Open ad link
-            location.href = adLink;
+            location.href = adLink[clickCount];
         } else {
             // After 5 clicks, redirect to Telegram
             location.href = telegramLink;

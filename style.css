@@ -161,13 +161,72 @@ p {
 
 /* Ad Container */
 .ad-container {
-    margin: 2rem 0;
+    margin: 2rem auto;
     text-align: center;
-    min-height: 250px;
+    width: 100%;
+    overflow: hidden;
     background-color: #ffffff;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive Ad Units */
+.ad-unit-300x250 {
+    width: 300px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+.ad-unit-728x90 {
+    width: 100%;
+    max-width: 728px;
+    height: 90px;
+    margin: 0 auto;
+}
+
+.ad-unit-160x600 {
+    width: 160px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.ad-unit-468x60 {
+    width: 100%;
+    max-width: 468px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.ad-unit-320x50 {
+    width: 100%;
+    max-width: 320px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .ad-unit-728x90,
+    .ad-unit-468x60 {
+        display: none;
+    }
+    
+    .ad-unit-320x50 {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .ad-unit-320x50 {
+        display: none;
+    }
+}
+
+/* Sticky Ad Container */
+.sticky-ad {
+    position: sticky;
+    top: 20px;
+    z-index: 99;
 }
 
 /* Button Styles */
@@ -457,4 +516,55 @@ footer {
 
 .resource-button:hover {
     background-color: #7b1fa2;
+}
+
+/* Side Banner Container */
+.side-banners-container {
+    display: none; /* Hidden by default on mobile */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    pointer-events: none; /* Allows clicking through the container */
+    z-index: 98;
+}
+
+.side-banner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 600px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    pointer-events: auto; /* Restore pointer events for the banner */
+}
+
+.side-banner.left {
+    left: 10px;
+}
+
+.side-banner.right {
+    right: 10px;
+}
+
+/* Media query for showing side banners */
+@media (min-width: 1400px) {
+    .side-banners-container {
+        display: block;
+    }
+    
+    /* Adjust main content to make room for side banners */
+    .container {
+        max-width: calc(1200px - 340px); /* 340px accounts for both side banners + margins */
+        margin: 0 auto;
+    }
+}
+
+/* Hide side banners when screen gets too narrow */
+@media (max-width: 1399px) {
+    .side-banners-container {
+        display: none;
+    }
 }
